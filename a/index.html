@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>軽貨ログ（仮称）｜運転日報アプリ 先行登録</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif; background:#0a1428; color:#f2f5fa; line-height:1.75; }
+  .wrap { max-width:1080px; margin:0 auto; padding:0 20px; }
+  header { display:flex; align-items:center; gap:10px; padding:18px 0; }
+  .logo { font-size:22px; font-weight:800; letter-spacing:.02em; }
+  .logo .truck { color:#ff7a1a; }
+  .tag { font-size:11px; color:#9fb2cc; border:1px solid #2a3c5f; border-radius:999px; padding:2px 10px; }
+  .hero { display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center; padding:18px 0 34px; }
+  .hero img { width:100%; border-radius:14px; display:block; }
+  h1 { font-size:40px; line-height:1.35; font-weight:900; }
+  h1 .accent { color:#ff7a1a; }
+  .lead { margin-top:16px; color:#c7d3e6; font-size:16px; }
+  .cta { display:inline-block; margin-top:24px; background:#ff7a1a; color:#fff; font-weight:800; font-size:18px; padding:15px 42px; border-radius:10px; text-decoration:none; }
+  .cta-sub { margin-top:10px; font-size:12px; color:#9fb2cc; }
+  section { padding:38px 0; border-top:1px solid #1b2a47; }
+  h2 { font-size:24px; font-weight:900; margin-bottom:14px; }
+  h2 .accent { color:#ff7a1a; }
+  p { color:#c7d3e6; font-size:15.5px; }
+  .stat { display:flex; gap:14px; margin-top:20px; flex-wrap:wrap; }
+  .stat .box { background:#101f3a; border:1px solid #22365c; border-radius:12px; padding:16px 20px; flex:1; min-width:200px; }
+  .stat .num { font-size:30px; font-weight:900; color:#ff7a1a; }
+  .stat .cap { font-size:13px; color:#9fb2cc; }
+  .phone { max-width:380px; margin:22px auto 0; background:#eef1f4; border-radius:26px; padding:12px; box-shadow:0 18px 40px rgba(0,0,0,.45); }
+  .chat { background:#f7f9fb; border-radius:18px; overflow:hidden; color:#222; }
+  .chat-head { background:#3fbf5a; color:#fff; font-weight:700; padding:10px 14px; font-size:14px; }
+  .chat-body { padding:14px; display:flex; flex-direction:column; gap:9px; font-size:13.5px; }
+  .b { max-width:82%; padding:8px 12px; border-radius:14px; line-height:1.55; }
+  .b.sys { background:#fff; border:1px solid #dde3ea; align-self:flex-start; }
+  .b.me { background:#ff7a1a; color:#fff; align-self:flex-end; }
+  .b.done { background:#fff; border:1px solid #dde3ea; align-self:flex-start; font-size:13px; }
+  .features { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:20px; }
+  .features .f { background:#101f3a; border:1px solid #22365c; border-radius:12px; padding:16px; }
+  .features .f b { display:block; margin-bottom:6px; font-size:15px; }
+  .features .f span { font-size:13px; color:#9fb2cc; }
+  
+  .honest-box { background:#2a1a08; border:1px solid #7a4a12; border-radius:12px; padding:20px 22px; }
+  .honest-box b { color:#ffb066; }
+  form { background:#101f3a; border:1px solid #22365c; border-radius:14px; padding:24px; margin-top:18px; }
+  .q { margin-bottom:22px; }
+  .q .qt { font-weight:800; margin-bottom:10px; font-size:16px; }
+  .opts { display:flex; flex-direction:column; gap:8px; }
+  .opts label { background:#0a1428; border:1px solid #2a3c5f; border-radius:10px; padding:11px 14px; font-size:15px; cursor:pointer; display:flex; gap:10px; align-items:center; }
+  .opts input { accent-color:#ff7a1a; width:18px; height:18px; }
+  .txt { width:100%; background:#0a1428; border:1px solid #2a3c5f; border-radius:10px; padding:12px 14px; color:#fff; font-size:15px; }
+  .submit { width:100%; background:#ff7a1a; color:#fff; font-weight:800; font-size:18px; border:none; padding:16px; border-radius:10px; cursor:pointer; }
+  .done-panel { display:none; background:#0f2e17; border:1px solid #2c6e3f; border-radius:12px; padding:22px; text-align:center; margin-top:18px; }
+  footer { padding:26px 0 44px; font-size:12px; color:#7e90ad; border-top:1px solid #1b2a47; }
+  @media (max-width:760px) {
+    .hero { grid-template-columns:1fr; gap:20px; }
+    h1 { font-size:31px; }
+    .features { grid-template-columns:1fr; }
+    .cta { width:100%; text-align:center; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo"><span class="truck">■</span> 軽貨ログ</div>
+    <div class="tag">名称は仮称です</div>
+  </header>
+
+  <div class="hero">
+    <img src="hero.jpg" alt="夕方の倉庫でスマートフォンを見る軽貨物ドライバー">
+    <div>
+      <h1>運転日報、<br>まだ書いてないです<span class="accent">よね。</span></h1>
+      <p class="lead">2025年4月の法改正で、軽貨物ドライバーにも運転日報の作成と1年保管が義務になりました。違反には罰則もあります。でも同業調査では、8割以上のドライバーがまだ日報を作っていません。忙しくて続かない。紙はなくす。分かります、自分も現場の人間なので。</p>
+      <a class="cta" href="#entry">先行登録する</a>
+      <div class="cta-sub">無料・1分で登録できます</div>
+    </div>
+  </div>
+
+  <section>
+    <h2>送るだけで、<span class="accent">日報が溜まっていく</span></h2>
+    <p>帰宅前に、チャットで「売上・経費・走行距離」を送るだけ。日報は法律の様式に沿って自動で整理され、1年保管もアプリ側でやります。確定申告の時期には、収支の集計（CSV）がそのまま出ます。</p>
+    <div class="phone">
+      <div class="chat">
+        <div class="chat-head">軽貨ログ 公式</div>
+        <div class="chat-body">
+          <div class="b sys">今日の運行が終了しました。日報を入力しますか？</div>
+          <div class="b me">はい</div>
+          <div class="b sys">本日の売上を入力してください</div>
+          <div class="b me">¥12,500</div>
+          <div class="b sys">経費を入力してください（燃料・駐車場など）</div>
+          <div class="b me">燃料 2,100円／駐車場 500円</div>
+          <div class="b done"><b>本日の日報</b><br>売上：¥12,500<br>経費：¥2,600<br>利益：¥9,900<br>日報を保存しました。</div>
+        </div>
+      </div>
+    </div>
+    <div class="features">
+      <div class="f"><b>法令の様式に対応</b><span>義務化された記載項目に沿って自動整理。1年保管もアプリ側で。</span></div>
+      <div class="f"><b>売上・経費を自動集計</b><span>毎日の記録がそのまま台帳に。確定申告の集計CSVが出ます。</span></div>
+      <div class="f"><b>月額800円・初月無料（予定）</b><span>iPhone / Android のアプリとして提供予定です。</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>作っているのは、<span class="accent">現役ドライバー</span>です</h2>
+    <p>現役の軽貨物ドライバーが作っています。貨物軽自動車安全管理者講習も自分で受けました。日報の義務化が「現場では回らない」ことを身で知っているので、IT会社ではなく当事者が作ります。</p>
+    <div class="stat">
+      <div class="box"><div class="num">8割超</div><div class="cap">運転日報をまだ作成していないドライバーの割合（同業調査）</div></div>
+      <div class="box"><div class="num">1年</div><div class="cap">運転日報の保管が義務付けられている期間</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>正直な話をします</h2>
+    <div class="honest-box">
+      <p><b>このアプリは、まだ開発前です。</b>本当にドライバーの役に立つのか、月800円を払ってでも使いたい人がいるのか。それを確認してから作ります。<b>登録が集まらなければ、作りません。</b>先行登録してくれた方には、公開時に初月無料＋先行登録特典（予定）をお渡しします。</p>
+    </div>
+
+    <form id="entry">
+      <div class="q">
+        <div class="qt">1. いま日報はどうしていますか</div>
+        <div class="opts">
+          <label><input type="radio" name="q1" value="書いていない"> 書いていない</label>
+          <label><input type="radio" name="q1" value="紙"> 紙で書いている</label>
+          <label><input type="radio" name="q1" value="Excel"> Excel・スプレッドシート</label>
+          <label><input type="radio" name="q1" value="アプリ"> アプリを使っている</label>
+        </div>
+      </div>
+      <div class="q">
+        <div class="qt">2. 月800円・初月無料なら使いますか</div>
+        <div class="opts">
+          <label><input type="radio" name="q2" value="使う"> 使う</label>
+          <label><input type="radio" name="q2" value="中身を見て決める"> 中身を見て決める</label>
+          <label><input type="radio" name="q2" value="使わない"> 使わない</label>
+        </div>
+      </div>
+      <div class="q">
+        <div class="qt">3. 連絡先（公開時のお知らせ用・任意）</div>
+        <input class="txt" type="text" name="contact" placeholder="メールアドレス or LINE ID">
+      </div>
+      <button class="submit" type="submit">先行登録する</button>
+    </form>
+    <div class="done-panel" id="done">
+      <b style="font-size:18px;">登録ありがとうございます。</b>
+      <p style="margin-top:8px;">これはデザイン確認用のサンプルページのため、実際の送信は行われていません。</p>
+    </div>
+  </section>
+
+  <footer>
+    本ページは先行登録の受付ページです。アプリはまだ提供していません。登録情報は公開時の連絡にのみ使います。<br>
+    調査数値の出典：運転日報の未作成割合は CarryNote 社（株式会社エフワークス）の同業調査によります。
+  </footer>
+</div>
+<script>
+  document.getElementById('entry').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('done').style.display = 'block';
+    document.getElementById('done').scrollIntoView({behavior:'smooth'});
+  });
+</script>
+</body>
+</html>

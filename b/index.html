@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>デリロク（仮称）｜日報は、送るだけ。先行登録</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif; background:#f7f8f7; color:#1c2a22; line-height:1.75; }
+  .wrap { max-width:1080px; margin:0 auto; padding:0 20px; }
+  header { display:flex; align-items:center; gap:10px; padding:18px 0; }
+  .logo { font-size:22px; font-weight:800; color:#0b6b3a; }
+  .tag { font-size:11px; color:#5c7264; border:1px solid #c9d8cd; border-radius:999px; padding:2px 10px; background:#fff; }
+  .hero { display:grid; grid-template-columns:1.1fr .9fr; gap:36px; align-items:center; padding:26px 0 40px; }
+  .badge { display:inline-block; background:#0b6b3a; color:#fff; font-size:13px; font-weight:700; border-radius:999px; padding:5px 14px; margin-bottom:16px; }
+  h1 { font-size:44px; line-height:1.3; font-weight:900; }
+  .lead { margin-top:16px; color:#3c5045; font-size:16px; }
+  .cta { display:inline-block; margin-top:24px; background:#0b6b3a; color:#fff; font-weight:800; font-size:18px; padding:15px 42px; border-radius:10px; text-decoration:none; }
+  .cta-sub { margin-top:10px; font-size:12px; color:#5c7264; }
+  .phone { max-width:360px; margin:0 auto; background:#111; border-radius:40px; padding:10px; box-shadow:0 22px 44px rgba(20,50,30,.18); }
+  .chat { background:#fff; border-radius:32px; overflow:hidden; }
+  .chat-head { background:#0b6b3a; color:#fff; font-weight:700; padding:14px; font-size:14px; text-align:center; }
+  .chat-body { padding:16px 14px 20px; display:flex; flex-direction:column; gap:8px; font-size:13.5px; }
+  .b { max-width:82%; padding:8px 12px; border-radius:14px; line-height:1.55; }
+  .b.me { background:#0b6b3a; color:#fff; align-self:flex-end; }
+  .b.sys { background:#eef3ef; align-self:flex-start; }
+  .b.done { background:#fff; border:1px solid #d8e2da; align-self:flex-start; width:100%; max-width:100%; font-size:13px; }
+  .time { font-size:10px; color:#8aa091; align-self:flex-end; margin:-4px 2px 0 0; }
+  section { padding:38px 0; border-top:1px solid #dde5de; }
+  h2 { font-size:24px; font-weight:900; margin-bottom:14px; }
+  p { color:#3c5045; font-size:15.5px; }
+  .features { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:20px; }
+  .features .f { background:#fff; border:1px solid #dde5de; border-radius:12px; padding:16px; }
+  .features .f b { display:block; margin-bottom:6px; font-size:15px; }
+  .features .f span { font-size:13px; color:#5c7264; }
+  .check { color:#0b6b3a; font-weight:900; }
+  .honest-box { background:#fff8ec; border:1px solid #e5cf9e; border-radius:12px; padding:20px 22px; }
+  form { background:#fff; border:1px solid #dde5de; border-radius:14px; padding:24px; margin-top:18px; }
+  .q { margin-bottom:22px; }
+  .q .qt { font-weight:800; margin-bottom:10px; font-size:16px; }
+  .opts { display:flex; flex-direction:column; gap:8px; }
+  .opts label { background:#f7f8f7; border:1px solid #d8e2da; border-radius:10px; padding:11px 14px; font-size:15px; cursor:pointer; display:flex; gap:10px; align-items:center; }
+  .opts input { accent-color:#0b6b3a; width:18px; height:18px; }
+  .txt { width:100%; background:#f7f8f7; border:1px solid #d8e2da; border-radius:10px; padding:12px 14px; font-size:15px; }
+  .submit { width:100%; background:#0b6b3a; color:#fff; font-weight:800; font-size:18px; border:none; padding:16px; border-radius:10px; cursor:pointer; }
+  .done-panel { display:none; background:#e9f5ec; border:1px solid #9fd0ab; border-radius:12px; padding:22px; text-align:center; margin-top:18px; }
+  footer { padding:26px 0 44px; font-size:12px; color:#7d9284; border-top:1px solid #dde5de; }
+  @media (max-width:760px) {
+    .hero { grid-template-columns:1fr; gap:24px; }
+    h1 { font-size:33px; }
+    .features { grid-template-columns:1fr; }
+    .cta { width:100%; text-align:center; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">デリロク</div>
+    <div class="tag">名称は仮称です</div>
+  </header>
+
+  <div class="hero">
+    <div>
+      <div class="badge">月額800円・初月無料（予定）</div>
+      <h1>日報は、送るだけ。</h1>
+      <p class="lead">ドライバーは、売上・経費をチャットで送るだけ。走行距離も集計され、日報と確定申告の帳簿が自動で作られます。2025年4月の法改正で義務化された運転日報の作成・1年保管にも、この形なら続けられます。</p>
+      <a class="cta" href="#entry">先行登録する</a>
+      <div class="cta-sub">無料・1分で登録できます</div>
+    </div>
+    <div class="phone">
+      <div class="chat">
+        <div class="chat-head">デリロク チャット</div>
+        <div class="chat-body">
+          <div class="b me">本日の売上：12,400円</div><div class="time">17:03</div>
+          <div class="b me">経費：ガソリン 3,200円</div><div class="time">17:04</div>
+          <div class="b me">走行：78km</div><div class="time">17:04</div>
+          <div class="b sys">ありがとうございます。本日の日報を作成しました。</div>
+          <div class="b done"><b>2025/10/05 日報（自動作成）</b><br>売上合計 12,400円<br>経費合計 3,200円<br>走行距離 78km<br>純売上：9,200円／帳簿ステータス：作成済み</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <h2>義務化された日報を、いちばん軽い形で</h2>
+    <p>2025年4月の法改正で、軽貨物ドライバーにも運転日報の作成と1年保管が義務になりました。違反には罰則もあります。それでも同業調査では、8割以上のドライバーがまだ日報を作っていません。続かないのは、忙しい現場では当然です。だから「書く」のではなく「送るだけ」にしました。</p>
+    <div class="features">
+      <div class="f"><b><span class="check">✓</span> 自動で帳簿化</b><span>毎日の記録がそのまま売上・経費の台帳になります。</span></div>
+      <div class="f"><b><span class="check">✓</span> 確定申告の集計CSV</b><span>申告時期に、収支の集計データがそのまま出ます。</span></div>
+      <div class="f"><b><span class="check">✓</span> 1年保管もアプリ側で</b><span>義務付けられた保管期間も、アプリが管理します。</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>作っているのは、現役ドライバーです</h2>
+    <p>現役の軽貨物ドライバーが作っています。貨物軽自動車安全管理者講習も自分で受けました。日報の義務化が「現場では回らない」ことを身で知っているので、IT会社ではなく当事者が作ります。iPhone / Android のアプリとして提供予定です。</p>
+  </section>
+
+  <section>
+    <h2>正直な話をします</h2>
+    <div class="honest-box">
+      <p><b>このアプリは、まだ開発前です。</b>本当にドライバーの役に立つのか、月800円を払ってでも使いたい人がいるのか。それを確認してから作ります。<b>登録が集まらなければ、作りません。</b>先行登録してくれた方には、公開時に初月無料＋先行登録特典（予定）をお渡しします。</p>
+    </div>
+
+    <form id="entry">
+      <div class="q">
+        <div class="qt">1. いま日報はどうしていますか</div>
+        <div class="opts">
+          <label><input type="radio" name="q1" value="書いていない"> 書いていない</label>
+          <label><input type="radio" name="q1" value="紙"> 紙で書いている</label>
+          <label><input type="radio" name="q1" value="Excel"> Excel・スプレッドシート</label>
+          <label><input type="radio" name="q1" value="アプリ"> アプリを使っている</label>
+        </div>
+      </div>
+      <div class="q">
+        <div class="qt">2. 月800円・初月無料なら使いますか</div>
+        <div class="opts">
+          <label><input type="radio" name="q2" value="使う"> 使う</label>
+          <label><input type="radio" name="q2" value="中身を見て決める"> 中身を見て決める</label>
+          <label><input type="radio" name="q2" value="使わない"> 使わない</label>
+        </div>
+      </div>
+      <div class="q">
+        <div class="qt">3. 連絡先（公開時のお知らせ用・任意）</div>
+        <input class="txt" type="text" name="contact" placeholder="メールアドレス or LINE ID">
+      </div>
+      <button class="submit" type="submit">先行登録する</button>
+    </form>
+    <div class="done-panel" id="done">
+      <b style="font-size:18px;">登録ありがとうございます。</b>
+      <p style="margin-top:8px;">これはデザイン確認用のサンプルページのため、実際の送信は行われていません。</p>
+    </div>
+  </section>
+
+  <footer>
+    本ページは先行登録の受付ページです。アプリはまだ提供していません。登録情報は公開時の連絡にのみ使います。<br>
+    調査数値の出典：運転日報の未作成割合は CarryNote 社（株式会社エフワークス）の同業調査によります。
+  </footer>
+</div>
+<script>
+  document.getElementById('entry').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('done').style.display = 'block';
+    document.getElementById('done').scrollIntoView({behavior:'smooth'});
+  });
+</script>
+</body>
+</html>
