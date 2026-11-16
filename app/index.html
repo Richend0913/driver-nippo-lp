@@ -61,6 +61,13 @@
   .kpi .v.orange { color:#ff7a1a; }
   .csv { margin-top:16px; width:100%; background:#16263f; border:1px solid #2a3c5f; color:#fff; border-radius:10px; padding:13px; font-size:15px; font-weight:700; cursor:pointer; }
   .note { font-size:12px; color:#7e90ad; margin-top:14px; }
+  .databox { margin-top:22px; background:#101f3a; border:1px solid #22365c; border-radius:12px; padding:16px; }
+  .databox h4 { font-size:14px; margin-bottom:6px; }
+  .databox .uid { font-size:13px; color:#9fb2cc; margin-bottom:12px; }
+  .databox .uid b { color:#ffb066; letter-spacing:.06em; }
+  .databox button { width:100%; border-radius:10px; padding:12px; font-size:14px; font-weight:700; cursor:pointer; margin-top:8px; }
+  .databox .exp { background:#16263f; border:1px solid #2a3c5f; color:#fff; }
+  .databox .wipe { background:none; border:1px solid #7a2a12; color:#ff9a66; }
   /* tabbar */
   nav { position:fixed; left:0; right:0; bottom:0; background:#0d1a30; border-top:1px solid #22365c; display:flex; z-index:10; }
   nav .in { max-width:520px; margin:0 auto; display:flex; width:100%; }
@@ -102,6 +109,12 @@
       <button class="csv" id="csvbtn">確定申告用 CSV をダウンロード</button>
       <p class="note">CSVは「日付・売上・経費・利益・走行距離」の月次明細です。収支内訳書への転記に使えます。</p>
       <p class="note">この試作版のデータは、この端末の中だけに保存されます（サーバーには送られません）。</p>
+      <div class="databox">
+        <h4>データ管理</h4>
+        <div class="uid">あなたの利用者ID：<b id="uidview">―</b><br>データはこのID単位で分かれています。本番版でも、データの持ち主はあなたで、いつでも書き出しと削除ができます。</div>
+        <button class="exp" id="expall">全期間のCSVを書き出す</button>
+        <button class="wipe" id="wipe">このIDのデータを全て削除</button>
+      </div>
     </div>
   </main>
   <nav><div class="in">
@@ -111,7 +124,16 @@
   </div></nav>
 </div>
 <script>
-const KEY = 'keikaro_entries_v1';
+const UID_KEY = 'keikaro_uid';
+let uid = localStorage.getItem(UID_KEY);
+if (!uid) {
+  uid = 'KG-' + Array.from({length:6}, () => 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'[Math.floor(Math.random()*31)]).join('');
+  localStorage.setItem(UID_KEY, uid);
+}
+const KEY = 'keikaro_entries_v1_' + uid;
+if (!localStorage.getItem(KEY) && localStorage.getItem('keikaro_entries_v1')) {
+  localStorage.setItem(KEY, localStorage.getItem('keikaro_entries_v1'));
+}
 const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch(e){ return []; } };
 const saveAll = a => localStorage.setItem(KEY, JSON.stringify(a));
 const yen = n => '¥' + Number(n||0).toLocaleString('ja-JP');
@@ -298,6 +320,26 @@ function renderSum(){
     URL.revokeObjectURL(a.href);
   };
 }
+document.getElementById('uidview').textContent = uid;
+document.getElementById('expall').onclick = () => {
+  const entries = load().slice().sort((a,b)=> a.date<b.date?-1:1);
+  if (!entries.length) { alert('まだ日報がありません。'); return; }
+  const rows = [['日付','売上','経費','利益','走行距離(km)']];
+  entries.forEach(e => rows.push([e.date, e.sales, expTotal(e), e.sales-expTotal(e), e.distance]));
+  const csv = '\ufeff' + rows.map(r => r.join(',')).join('\r\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv'}));
+  a.download = 'nippo-all-' + uid + '.csv';
+  a.click();
+  URL.revokeObjectURL(a.href);
+};
+document.getElementById('wipe').onclick = () => {
+  if (!confirm('ID ' + uid + ' の日報データを全て削除します。元に戻せません。よろしいですか？')) return;
+  if (!confirm('本当に削除しますか？必要な場合は、先にCSVで書き出してください。')) return;
+  localStorage.removeItem(KEY);
+  alert('削除しました。');
+  renderSum(); renderList(); startFlow();
+};
 </script>
 </body>
 </html>
