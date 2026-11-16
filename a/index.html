@@ -116,33 +116,37 @@
       <p><b>このアプリは、まだ開発前です。</b>本当にドライバーの役に立つのか、月800円を払ってでも使いたい人がいるのか。それを確認してから作ります。<b>登録が集まらなければ、作りません。</b>先行登録してくれた方には、公開時に初月無料＋先行登録特典（予定）をお渡しします。</p>
     </div>
 
-    <form id="entry">
+    <form id="entry" action="https://formsubmit.co/info@mimoria.jp" method="POST">
+      <input type="hidden" name="_subject" value="【日報アプリ】先行登録がありました">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://richend0913.github.io/driver-nippo-lp/a/?done=1">
       <div class="q">
         <div class="qt">1. いま日報はどうしていますか</div>
         <div class="opts">
-          <label><input type="radio" name="q1" value="書いていない"> 書いていない</label>
-          <label><input type="radio" name="q1" value="紙"> 紙で書いている</label>
-          <label><input type="radio" name="q1" value="Excel"> Excel・スプレッドシート</label>
-          <label><input type="radio" name="q1" value="アプリ"> アプリを使っている</label>
+          <label><input type="radio" name="日報の現状" value="書いていない"> 書いていない</label>
+          <label><input type="radio" name="日報の現状" value="紙"> 紙で書いている</label>
+          <label><input type="radio" name="日報の現状" value="Excel"> Excel・スプレッドシート</label>
+          <label><input type="radio" name="日報の現状" value="アプリ"> アプリを使っている</label>
         </div>
       </div>
       <div class="q">
         <div class="qt">2. 月800円・初月無料なら使いますか</div>
         <div class="opts">
-          <label><input type="radio" name="q2" value="使う"> 使う</label>
-          <label><input type="radio" name="q2" value="中身を見て決める"> 中身を見て決める</label>
-          <label><input type="radio" name="q2" value="使わない"> 使わない</label>
+          <label><input type="radio" name="月800円なら" value="使う"> 使う</label>
+          <label><input type="radio" name="月800円なら" value="中身を見て決める"> 中身を見て決める</label>
+          <label><input type="radio" name="月800円なら" value="使わない"> 使わない</label>
         </div>
       </div>
       <div class="q">
         <div class="qt">3. 連絡先（公開時のお知らせ用・任意）</div>
-        <input class="txt" type="text" name="contact" placeholder="メールアドレス or LINE ID">
+        <input class="txt" type="text" name="連絡先" placeholder="メールアドレス or LINE ID">
       </div>
       <button class="submit" type="submit">先行登録する</button>
     </form>
     <div class="done-panel" id="done">
       <b style="font-size:18px;">登録ありがとうございます。</b>
-      <p style="margin-top:8px;">これはデザイン確認用のサンプルページのため、実際の送信は行われていません。</p>
+      <p style="margin-top:8px;">先行登録を受け付けました。公開時には、初月無料＋先行登録特典のご案内をお送りします。</p>
     </div>
   </section>
 
@@ -152,11 +156,10 @@
   </footer>
 </div>
 <script>
-  document.getElementById('entry').addEventListener('submit', function(e){
-    e.preventDefault();
+  if (new URLSearchParams(location.search).get('done') === '1') {
     document.getElementById('done').style.display = 'block';
     document.getElementById('done').scrollIntoView({behavior:'smooth'});
-  });
+  }
 </script>
 </body>
 </html>
